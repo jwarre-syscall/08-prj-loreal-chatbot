@@ -1,6 +1,6 @@
 // Replace this with the URL of your deployed Cloudflare Worker.
 // Never put an OpenAI API key in this browser-side file.
-const WORKER_URL = "https://loreal-chatbot.your-subdomain.workers.dev/";
+const WORKER_URL = "https://cool-grass-7a9c.jwarre46.workers.dev/";
 
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
