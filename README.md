@@ -1,14 +1,31 @@
-# Project 8: L'Oréal Chatbot
+# Project 8: L’Oréal Chatbot
 
-L’Oréal is exploring the power of AI, and your job is to showcase what's possible. Your task is to build a chatbot that helps users discover and understand L’Oréal’s extensive range of products—makeup, skincare, haircare, and fragrances—as well as provide personalized routines and recommendations.
+A learning project for a beauty assistant that answers questions about L’Oréal products, routines, and beauty-related recommendations.
 
-## 🚀 Launch via GitHub Codespaces
+## Start the site
 
-1. In the GitHub repo, click the **Code** button and select **Open with Codespaces → New codespace**.
-2. Once your codespace is ready, open the `index.html` file via the live preview.
+Open `index.html` in the Codespaces live preview. The provided L’Oréal logo is in `img/loreal-logo.png`.
 
-## ☁️ Cloudflare Note
+## Connect a Cloudflare Worker
 
-When deploying through Cloudflare, make sure your API request body (in `script.js`) includes a `messages` array and handle the response by extracting `data.choices[0].message.content`.
+The browser must call a Cloudflare Worker. Never put an OpenAI API key in `script.js`, `secrets.js`, or any file served by the website.
 
-Enjoy building your L’Oréal beauty assistant! 💄
+1. In Cloudflare, create a Worker and paste the contents of `RESOURCE_cloudflare-worker.js`.
+2. In the Worker settings, add a secret named `OPENAI_API_KEY` and paste your OpenAI key there. Keep the key in Cloudflare; do not commit it to GitHub.
+3. Deploy the Worker and copy its `.workers.dev` URL.
+4. In `script.js`, replace the example value of `WORKER_URL` with that URL.
+5. Reload the site and ask a beauty question. The Worker adds the L’Oréal-only system prompt and forwards the conversation to OpenAI.
+
+The Worker URL is account-specific, so it cannot be filled in until you deploy it. This repository does not contain an API key or a deployed Worker URL.
+
+## Conversation and privacy
+
+The chat sends the current conversation turns to the Worker so it can answer follow-up questions. The conversation history is held in browser memory for the current tab and clears when the page is refreshed. The visible “Your latest question” panel updates with each new question.
+
+## Brand and type choices
+
+The interface uses L’Oréal’s black, white, and vibrant red direction described in [FutureBrand’s L’Oréal case study](https://www.futurebrand.com/our-work/loreal). The serif display and sans-serif interface pairing is informed by [Monotype’s L’Oréal font review](https://hello.monotype.com/rs/800-DWE-978/images/BrandReview_LOREAL.pdf). The referenced commercial typefaces are not bundled; this project uses web-available display fonts with system serif and sans-serif fallbacks.
+
+## Project note
+
+Independent learning project; not an official L’Oréal service. Product availability varies by region. Follow product labels, and consult a qualified healthcare professional about persistent skin or scalp concerns.
