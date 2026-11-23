@@ -29,3 +29,20 @@ The interface uses L’Oréal’s black, white, and vibrant red direction descri
 ## Project note
 
 Independent learning project; not an official L’Oréal service. Product availability varies by region. Follow product labels, and consult a qualified healthcare professional about persistent skin or scalp concerns.
+
+## Routine Builder
+
+Open `routine-builder/` from the chatbot header. To preview locally, run
+`python -m http.server 8000` from the repository root and visit
+`http://localhost:8000/routine-builder/`.
+
+The builder uses the same Worker URL as the chatbot. Product selection is saved
+on the current browser, and follow-ups use the generated routine's product
+selection and chat history.
+
+To enable live web sources, deploy the updated `RESOURCE_cloudflare-worker.js`
+as the existing Cloudflare Worker. Keep its `OPENAI_API_KEY` secret in Cloudflare.
+The existing chatbot uses `POST /` and the upgraded builder uses `POST /routine`.
+Before the upgrade, the builder uses the existing chat response without web
+sources. After deploying, generate a routine and check that product source links
+appear on relevant replies.

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>L’Oréal | Routine Builder</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="../" aria-label="L’Oréal chatbot"><img src="../img/loreal-logo.png" alt="L’Oréal"></a>
+    <button id="direction" type="button" aria-pressed="false">Right-to-left layout</button>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>Build your beauty routine</h1>
+      <p>Choose your products, then get a routine with steps tailored to your selection.</p>
+    </div>
+    <div class="workspace">
+      <section aria-labelledby="catalog-title">
+        <h2 id="catalog-title">Explore products</h2>
+        <div class="filters">
+          <label>Search products <input id="search" type="search" placeholder="Name, brand, or keyword"></label>
+          <label>Category <select id="category"><option value="">All categories</option></select></label>
+        </div>
+        <p id="catalog-status" role="status"></p>
+        <div id="grid" class="grid"></div>
+      </section>
+      <aside>
+        <section class="panel" aria-labelledby="selected-title">
+          <h2 id="selected-title">Selected products <span id="count"></span></h2>
+          <p id="empty">Select products from the catalog to get started.</p>
+          <ul id="selected"></ul>
+          <button id="generate" class="primary" type="button" disabled>Generate routine</button>
+          <button id="clear" type="button" disabled>Clear all</button>
+        </section>
+        <section class="panel" aria-labelledby="chat-title">
+          <h2 id="chat-title">Routine chat</h2>
+          <div id="chat" role="log" aria-labelledby="chat-title" tabindex="0"></div>
+          <p id="request-status" role="status"></p>
+          <form id="chat-form">
+            <label for="question">Ask a follow-up</label>
+            <div class="chat-controls">
+              <input id="question" dir="auto" required maxlength="2000" disabled>
+              <button id="send" type="submit" disabled>Send</button>
+            </div>
+          </form>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
