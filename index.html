@@ -1,77 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7f5f2" />
-    <meta name="description" content="A L’Oréal beauty assistant for product questions, routines, and recommendations." />
-    <title>L’Oréal Beauty Assistant</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="#" aria-label="L’Oréal Beauty Assistant home">
-          <img src="img/loreal-logo.png" alt="L’Oréal" />
-          <span class="brand-divider" aria-hidden="true"></span>
-          <span class="brand-label">BEAUTY ASSISTANT</span>
-        </a>
-        <span class="header-note"><span class="status-dot" aria-hidden="true"></span> YOUR PERSONAL BEAUTY GUIDE</span>
-        <a href="routine-builder/">Routine Builder</a>
-      </header>
-
-      <main>
-        <section class="intro" aria-labelledby="page-title">
-          <p class="eyebrow">BEAUTY, MADE PERSONAL</p>
-          <h1 id="page-title">Find your <em>feel-good</em><br />beauty routine.</h1>
-          <p class="intro-copy">Explore L’Oréal products, build a routine, and get thoughtful recommendations for your beauty goals.</p>
-        </section>
-
-        <section class="assistant-card" aria-label="Chat with the L’Oréal beauty assistant">
-          <div class="card-heading">
-            <div class="assistant-mark" aria-hidden="true">L</div>
-            <div>
-              <h2>Your beauty assistant</h2>
-              <p>Here to help you find your next favorite.</p>
-            </div>
-            <span class="online-label"><span class="status-dot" aria-hidden="true"></span> ONLINE</span>
-          </div>
-
-          <div id="latestQuestion" class="latest-question" hidden>
-            <span class="latest-label">YOUR LATEST QUESTION</span>
-            <p id="latestQuestionText"></p>
-          </div>
-
-          <div id="chatWindow" class="chat-window" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation">
-            <div class="message-row assistant-row">
-              <div class="avatar" aria-hidden="true">L</div>
-              <div class="message-content">
-                <span class="message-name">L’Oréal Beauty Assistant</span>
-                <div class="message-bubble assistant-bubble">Hello! I can help with L’Oréal products, skincare, makeup, haircare, fragrance, and beauty routines. What would you like to explore?</div>
-              </div>
-            </div>
-          </div>
-
-          <form id="chatForm" class="chat-form">
-            <label for="userInput" class="visually-hidden">Ask a beauty question</label>
-            <input id="userInput" name="userInput" type="text" placeholder="Ask about a product, routine, or beauty goal…" autocomplete="off" maxlength="1200" required />
-            <button type="submit" id="sendBtn" aria-label="Send message">
-              <span class="material-icons" aria-hidden="true">arrow_upward</span>
-            </button>
-          </form>
-          <p class="privacy-note">Your conversation stays in this browser tab and is sent to the configured Cloudflare Worker.</p>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <span>BEAUTY, WITH A LITTLE MORE YOU.</span>
-        <span>Independent learning project · Product availability varies by region.</span>
-      </footer>
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>L’Oréal | Routine Builder</title>
+  <link rel="stylesheet" href="routine-builder/style.css">
+  <script src="routine-builder/script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="./" aria-label="L’Oréal Routine Builder home"><img src="img/loreal-logo.png" alt="L’Oréal"></a>
+    <a href="chatbot.html">Beauty Assistant</a>
+    <button id="direction" type="button" aria-pressed="false">Right-to-left layout</button>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>Build your beauty routine</h1>
+      <p>Choose your products, then get a routine with steps tailored to your selection.</p>
     </div>
-  </body>
+    <div class="workspace">
+      <section aria-labelledby="catalog-title">
+        <h2 id="catalog-title">Explore products</h2>
+        <div class="filters">
+          <label>Search products <input id="search" type="search" placeholder="Name, brand, or keyword"></label>
+          <label>Category <select id="category"><option value="">All categories</option></select></label>
+        </div>
+        <p id="catalog-status" role="status"></p>
+        <div id="grid" class="grid"></div>
+      </section>
+      <aside>
+        <section class="panel" aria-labelledby="selected-title">
+          <h2 id="selected-title">Selected products <span id="count"></span></h2>
+          <p id="empty">Select products from the catalog to get started.</p>
+          <ul id="selected"></ul>
+          <button id="generate" class="primary" type="button" disabled>Generate routine</button>
+          <button id="clear" type="button" disabled>Clear all</button>
+        </section>
+        <section class="panel" aria-labelledby="chat-title">
+          <h2 id="chat-title">Routine chat</h2>
+          <div id="chat" role="log" aria-labelledby="chat-title" tabindex="0"></div>
+          <p id="request-status" role="status"></p>
+          <form id="chat-form">
+            <label for="question">Ask a follow-up</label>
+            <div class="chat-controls">
+              <input id="question" dir="auto" required maxlength="2000" disabled>
+              <button id="send" type="submit" disabled>Send</button>
+            </div>
+          </form>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
 </html>

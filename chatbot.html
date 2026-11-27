@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f5f2" />
+    <meta name="description" content="A L’Oréal beauty assistant for product questions, routines, and recommendations." />
+    <title>L’Oréal Beauty Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="L’Oréal Beauty Assistant home">
+          <img src="img/loreal-logo.png" alt="L’Oréal" />
+          <span class="brand-divider" aria-hidden="true"></span>
+          <span class="brand-label">BEAUTY ASSISTANT</span>
+        </a>
+        <span class="header-note"><span class="status-dot" aria-hidden="true"></span> YOUR PERSONAL BEAUTY GUIDE</span>
+        <a href="./">Routine Builder</a>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">BEAUTY, MADE PERSONAL</p>
+          <h1 id="page-title">Find your <em>feel-good</em><br />beauty routine.</h1>
+          <p class="intro-copy">Explore L’Oréal products, build a routine, and get thoughtful recommendations for your beauty goals.</p>
+        </section>
+
+        <section class="assistant-card" aria-label="Chat with the L’Oréal beauty assistant">
+          <div class="card-heading">
+            <div class="assistant-mark" aria-hidden="true">L</div>
+            <div>
+              <h2>Your beauty assistant</h2>
+              <p>Here to help you find your next favorite.</p>
+            </div>
+            <span class="online-label"><span class="status-dot" aria-hidden="true"></span> ONLINE</span>
+          </div>
+
+          <div id="latestQuestion" class="latest-question" hidden>
+            <span class="latest-label">YOUR LATEST QUESTION</span>
+            <p id="latestQuestionText"></p>
+          </div>
+
+          <div id="chatWindow" class="chat-window" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation">
+            <div class="message-row assistant-row">
+              <div class="avatar" aria-hidden="true">L</div>
+              <div class="message-content">
+                <span class="message-name">L’Oréal Beauty Assistant</span>
+                <div class="message-bubble assistant-bubble">Hello! I can help with L’Oréal products, skincare, makeup, haircare, fragrance, and beauty routines. What would you like to explore?</div>
+              </div>
+            </div>
+          </div>
+
+          <form id="chatForm" class="chat-form">
+            <label for="userInput" class="visually-hidden">Ask a beauty question</label>
+            <input id="userInput" name="userInput" type="text" placeholder="Ask about a product, routine, or beauty goal…" autocomplete="off" maxlength="1200" required />
+            <button type="submit" id="sendBtn" aria-label="Send message">
+              <span class="material-icons" aria-hidden="true">arrow_upward</span>
+            </button>
+          </form>
+          <p class="privacy-note">Your conversation stays in this browser tab and is sent to the configured Cloudflare Worker.</p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>BEAUTY, WITH A LITTLE MORE YOU.</span>
+        <span>Independent learning project · Product availability varies by region.</span>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 // The public URL points to the existing Worker. Its API key stays in Cloudflare.
 const worker = "https://cool-grass-7a9c.jwarre46.workers.dev/";
+const catalogUrl = new URL("products.json", document.currentScript.src);
 const storageKey = "loreal-routine-products";
 const byId = (id) => document.getElementById(id);
 const search = byId("search");
@@ -103,7 +104,7 @@ function renderCatalog() {
 
 async function loadCatalog() {
   try {
-    const response = await fetch("products.json");
+    const response = await fetch(catalogUrl);
     if (!response.ok) throw new Error("Catalog unavailable");
     ({ products } = await response.json());
     try {

@@ -32,9 +32,9 @@ Independent learning project; not an official L’Oréal service. Product availa
 
 ## Routine Builder
 
-Open `routine-builder/` from the chatbot header. To preview locally, run
-`python -m http.server 8000` from the repository root and visit
-`http://localhost:8000/routine-builder/`.
+The Routine Builder is the homepage. The original Beauty Assistant is linked
+from its header. To preview locally, run `python -m http.server 8000` from the
+repository root and visit `http://localhost:8000/`.
 
 The builder uses the same Worker URL as the chatbot. Product selection is saved
 on the current browser, and follow-ups use the generated routine's product
