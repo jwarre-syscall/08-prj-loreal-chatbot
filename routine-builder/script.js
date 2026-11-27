@@ -1,6 +1,8 @@
 // The public URL points to the existing Worker. Its API key stays in Cloudflare.
 const worker = "https://cool-grass-7a9c.jwarre46.workers.dev/";
-const catalogUrl = new URL("products.json", document.currentScript.src);
+const scriptUrl = new URL(document.currentScript.src);
+const catalogUrl = new URL("products.json", scriptUrl);
+catalogUrl.search = scriptUrl.search;
 const storageKey = "loreal-routine-products";
 const byId = (id) => document.getElementById(id);
 const search = byId("search");
